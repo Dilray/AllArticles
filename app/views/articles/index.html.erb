@@ -1,0 +1,33 @@
+<h1>Articles</h1>
+
+<div class="articles">
+  <div class="article-header">
+    <div class="article-title">Title</div>
+    <div class="article-body">Body</div>
+    <div class="article-actions"></div>
+  </div>
+
+  <div class="article-list">
+    <% @articles.each do |article| %>
+      <div class="article-item">
+        <div class="article-title"><%= article.title %></div>
+        <div class="article-body"><%= article.body %></div>
+        <div class="article-actions">
+          <form action="articles/show" method="get" style="display:inline;">
+            <button type="submit">Show</button>
+          </form>
+          <form action="articles/edit" method="get" style="display:inline;">
+            <button type="submit">Edit</button>
+          </form>
+          <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'destroy-button' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<br>
+
+<form action="articles/new" method="get">
+  <button type="submit">New Article</button>
+</form>
