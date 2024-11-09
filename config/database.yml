@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: 'dilray' # имя пользователя PostgreSQL
+  password: '1234' # пароль PostgreSQL
+  host: localhost
+development:
+  <<: *default
+  database: articles_app_development
+
+test:
+  <<: *default
+  database: articles_app_test
+
+production:
+  <<: *default
+  database: articles_app_production
+  username: articles_app
+  password: <%= ENV['ARTICLES_APP_DATABASE_PASSWORD'] %>
+
