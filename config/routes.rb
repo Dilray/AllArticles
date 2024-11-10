@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: redirect('/')
+  get '/auth/google_oauth2', to: 'sessions#google_auth'
+  # get '/google/auth', to: 'sessions#google_auth'
+  delete '/logout', to: 'sessions#destroy'
 end
 
 #
@@ -18,4 +23,3 @@ end
 #   resources :articles
 #   root 'articles#index'
 # end
-

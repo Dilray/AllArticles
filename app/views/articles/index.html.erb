@@ -31,3 +31,10 @@
 <form action="articles/new" method="get">
   <button type="submit">New Article</button>
 </form>
+
+
+<% if session[:user_id] %>
+  <%= link_to "Logout", logout_path, method: :delete %>
+<% else %>
+  <%= link_to "Login with Google", "/auth/google_oauth2" %>
+<% end %>
