@@ -33,8 +33,12 @@
 </form>
 
 
-<% if session[:user_id] %>
-  <%= link_to "Logout", logout_path, method: :delete %>
-<% else %>
-  <%= link_to "Login with Google", "/auth/google_oauth2" %>
-<% end %>
+<%# if current_user %>
+<!--  <h2> <%#=current_user.email %> </h2>-->
+  <%#= image_tag(current_user.avatar_url) %>
+  <%#= link_to "Edit Account", edit_user_registration_path %>
+  <%#= button_to "Logout", destroy_user_session_path, data: {turbo: "false"}, method:  :delete %>
+  <%# else %>
+  <%= link_to "Login", new_user_password_path %>
+  <%= link_to "Create Account", new_user_registration_path %>
+<%# end %>
