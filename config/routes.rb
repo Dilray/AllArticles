@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  #root 'pages#home'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+  omniauth_callbacks: 'users/omniauth_callbacks'
+  }
   resources :articles
   root "articles#index"
   get 'articles/index' => 'articles#index'
@@ -16,10 +22,5 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2', to: 'sessions#google_auth'
   # get '/google/auth', to: 'sessions#google_auth'
   delete '/logout', to: 'sessions#destroy'
+  #  devise_for :users
 end
-
-#
-# Rails.application.routes.draw do
-#   resources :articles
-#   root 'articles#index'
-# end
